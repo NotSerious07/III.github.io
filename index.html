@@ -1,254 +1,71 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BMW — History, Innovation & Icons</title>
-  <meta name="description" content="A sleek, animated BMW website: history timeline, innovations, gallery, and motorsport heritage. Ready for GitHub Pages." />
-  <style>
-    :root{
-      --bg:#0a0b0e;           /* deep graphite */
-      --panel:#0e1116ee;      /* glassy card */
-      --edge:#1b1f27;         /* borders */
-      --ink:#e9eef6;          /* text */
-      --muted:#9aa3b2;        /* secondary text */
-      --bmw:#1c69d4;          /* BMW blue */
-      --bmw2:#0d3a8f;         /* deep blue */
-      --accent:#50befe;       /* light cyan */
-      --radius:14px;          /* sharp-ish, not bubbly */
-      --shadow: 0 14px 40px rgba(0,0,0,.45);
-      --glow: 0 0 0 rgba(28,105,212,0.0);
-    }
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; background: var(--bg); color:var(--ink); overflow-x:hidden}/* ------------ Utility ------------ */
-.container{max-width:1150px;margin:0 auto;padding:0 20px}
-.grid{display:grid; gap:1.2rem}
-.center{text-align:center}
-.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.1rem;border:1px solid #223046;border-radius:10px;background:linear-gradient(180deg,#0d141c,#0a0d12);text-decoration:none;color:var(--ink);font-weight:600;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
-.btn:hover{transform:translateY(-2px);border-color:#2c445e;box-shadow:0 14px 36px rgba(80,190,254,.18)}
-.tag{font-size:.8rem;color:var(--muted);border:1px solid #242b35;padding:.2rem .5rem;border-radius:6px}
-
-/* ------------ Nav ------------ */
-nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(10,11,14,.9),rgba(10,11,14,.6) 70%,transparent);backdrop-filter: blur(8px);border-bottom:1px solid #10141c}
-nav .bar{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
-.brand{display:flex;align-items:center;gap:.7rem;font-weight:800;letter-spacing:.08em}
-.brand .dot{width:.9rem;height:.9rem;border-radius:3px;background:linear-gradient(90deg,var(--bmw),var(--accent));filter: drop-shadow(0 0 10px rgba(28,105,212,.6))}
-.nav-links{display:flex;gap:.9rem}
-.nav-links a{color:var(--ink);text-decoration:none;padding:.55rem .8rem;border-radius:8px;border:1px solid transparent}
-.nav-links a:hover{border-color:#223046;box-shadow:0 10px 28px rgba(28,105,212,.15)}
-
-/* ------------ Hero ------------ */
-.hero{position:relative;min-height:72vh;display:grid;place-items:center;overflow:clip}
-.hero::before{content:"";position:absolute;inset:-40% -10% -10% -10%;background:
-  radial-gradient(800px 400px at 80% 0%, rgba(28,105,212,.25), transparent 60%),
-  radial-gradient(600px 400px at 10% 90%, rgba(80,190,254,.18), transparent 60%)}
-.hero .backdrop{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1619767886558-efdc259cde1d?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;opacity:.28;filter:contrast(105%) saturate(110%)}
-.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,11,14,.8), rgba(10,11,14,.6) 45%, rgba(10,11,14,.95));}
-.hero .content{position:relative;padding:6rem 0 3rem}
-.kicker{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:.82rem;margin-bottom:.8rem}
-h1{margin:0;font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;font-weight:900;letter-spacing:.02em;background:linear-gradient(90deg,var(--ink),#cfe6ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 24px rgba(255,255,255,.06)}
-.lead{margin-top:1rem;max-width:70ch;color:#cdd6e4;font-size:1.05rem}
-.cta-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem}
-
-/* ------------ Section base ------------ */
-section{padding:3rem 0}
-.section-title{font-size:1.6rem;font-weight:800;margin:0 0 .6rem 0}
-.section-sub{color:var(--muted);margin:0 0 1.4rem 0}
-
-/* ------------ Cards ------------ */
-.card{background:var(--panel);border:1px solid var(--edge);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.4rem}
-.card .title{font-weight:700;margin:0 0 .4rem 0}
-
-/* ------------ Timeline ------------ */
-.timeline{position:relative;margin-left:.4rem}
-.timeline::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--bmw),transparent)}
-.t-item{position:relative;padding-left:2.8rem;margin:1rem 0}
-.t-item::before{content:"";position:absolute;left:6px;top:.4rem;width:16px;height:16px;border-radius:4px;background:linear-gradient(90deg,var(--bmw),var(--accent));box-shadow:0 0 0 4px rgba(28,105,212,.15)}
-.t-year{font-weight:800;color:#cfe2ff}
-.t-text{color:#d7dfeb}
-
-/* ------------ Gallery ------------ */
-.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:.8rem}
-.g{grid-column:span 4;position:relative;border-radius:12px;overflow:hidden;border:1px solid #1a2230;background:#0c1016}
-.g img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);transition:transform .5s ease, filter .5s ease}
-.g:hover img{transform:scale(1.06);filter:contrast(110%) saturate(110%)}
-@media (max-width:900px){.g{grid-column:span 6}}@media (max-width:580px){.g{grid-column:span 12}}
-
-/* ------------ Stats / Fact cards ------------ */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-.stat{background:linear-gradient(180deg,#0c1118,#0a0d12);border:1px solid #1a2330;border-radius:12px;padding:1.2rem;text-align:center}
-.stat .num{font-size:1.8rem;font-weight:900;background:linear-gradient(90deg,var(--bmw),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.stat .lbl{color:var(--muted);font-size:.9rem}
-@media (max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}@media (max-width:580px){.stats{grid-template-columns:1fr}}
-
-/* ------------ Footer ------------ */
-footer{padding:2.6rem 0 3.4rem;color:var(--muted);text-align:center;border-top:1px solid #111722}
-
-/* ------------ Reveal animations ------------ */
-.reveal{opacity:0;transform:translateY(16px);will-change:transform,opacity}
-.reveal.a{animation:reveal .8s cubic-bezier(.2,.65,.2,1) forwards}
-@keyframes reveal{to{opacity:1;transform:translateY(0)}}
-
-  </style>
+  <title>BMW — History & Innovation</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- NAV -->
-  <nav>
-    <div class="container bar">
-      <div class="brand"><span class="dot"></span> BMW — Heritage</div>
-      <div class="nav-links">
-        <a href="#history">History</a>
-        <a href="#innovation">Innovation</a>
-        <a href="#motorsport">Motorsport</a>
-        <a href="#gallery">Gallery</a>
+  <header class="navbar">
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW Logo">
+      <span>BMW Legacy</span>
+    </div>
+    <nav>
+      <a href="#history">History</a>
+      <a href="#innovation">Innovation</a>
+      <a href="#motorsport">Motorsport</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>BMW</h1>
+    <p>Sheer Driving Pleasure — Since 1916</p>
+  </section>
+
+  <section id="history" class="content">
+    <h2>History</h2>
+    <p>BMW (Bayerische Motoren Werke AG) was founded in 1916, originally producing aircraft engines. Over the decades, BMW has become one of the most iconic premium automobile manufacturers, blending engineering excellence with luxury and sportiness.</p>
+  </section>
+
+  <section id="innovation" class="content">
+    <h2>Innovation</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Electric Future</h3>
+        <p>The BMW i Series pioneers sustainable driving with cutting-edge electric technology.</p>
+      </div>
+      <div class="card">
+        <h3>Engineering Precision</h3>
+        <p>BMW’s inline-six engines are a benchmark in smoothness and performance.</p>
+      </div>
+      <div class="card">
+        <h3>Driver-Centric Design</h3>
+        <p>Every BMW cockpit is angled towards the driver — combining ergonomics with style.</p>
       </div>
     </div>
-  </nav>  <!-- HERO -->  <header class="hero">
-    <div class="backdrop" aria-hidden="true"></div>
-    <div class="veil" aria-hidden="true"></div>
-    <div class="container content">
-      <div class="kicker">Bayerische Motoren Werke AG</div>
-      <h1>Engineering Precision.
-        <br>Timeless Design.
-      </h1>
-      <p class="lead">
-        From aircraft engines to electric icons — BMW has spent over a century shaping how the world moves.
-        Dive into a concise timeline, innovation highlights, motorsport legends, and a hand‑picked gallery.
-      </p>
-      <div class="cta-row">
-        <a class="btn" href="#history">Explore History</a>
-        <a class="btn" href="#gallery">View Gallery</a>
-      </div>
-    </div>
-  </header>  <main>
-    <!-- HISTORY -->
-    <section id="history" class="container">
-      <h2 class="section-title">History at a Glance</h2>
-      <p class="section-sub">Key milestones from 1916 to the electric era.</p><div class="timeline">
-    <div class="t-item reveal">
-      <div class="t-year">1916–1917</div>
-      <div class="t-text">Founding of BMW from Rapp Motorenwerke; early focus on aircraft engines. The blue‑white roundel reflects the Bavarian colors.</div>
-    </div>
-    <div class="t-item reveal">
-      <div class="t-year">1923</div>
-      <div class="t-text">First BMW motorcycle — the R32 — debuts with a flat‑twin boxer engine layout.</div>
-    </div>
-    <div class="t-item reveal">
-      <div class="t-year">1928–1929</div>
-      <div class="t-text">Entry into automobile production via Fahrzeugfabrik Eisenach (Dixi); BMW 3/15 becomes the first BMW‑badged car.</div>
-    </div>
-    <div class="t-item reveal">
-      <div class="t-year">1936</div>
-      <div class="t-text">BMW 328 sports car sets a benchmark for lightweight performance and motorsport success.</div>
-    </div>
-    <div class="t-item reveal">
-      <div class="t-year">1955–1959</div>
-      <div class="t-text">Post‑war recovery: Isetta microcar keeps BMW afloat; luxury 507 and 503 showcase design ambition.</div>
-    </div>
-    <div class="t-item reveal">
-      <div class="t-year">1962–1972</div>
-      <div class="t-text">“Neue Klasse” sedans revive the brand and set the DNA for modern BMW; BMW M GmbH and the iconic headquarters open in 1972.</div>
-    </div>
-    <div class="t-item reveal">
-      <div class="t-year">1975–1989</div>
-      <div class="t-text">3 Series launches (E21) and becomes a global best‑seller; the M1 mid‑engine supercar and M3 (E30) cement performance heritage.</div>
-    </div>
-    <div class="t-item reveal">
-      <div class="t-year">1994–2003</div>
-      <div class="t-text">Rover Group acquisition and later divestment; MINI relaunch under BMW; Rolls‑Royce Motor Cars joins the group (production from 2003).</div>
-    </div>
-    <div class="t-item reveal">
-      <div class="t-year">2013</div>
-      <div class="t-text">BMW i3 (carbon‑fiber EV city car) and i8 (plug‑in hybrid sports car) signal a bold electrified future.</div>
-    </div>
-    <div class="t-item reveal">
-      <div class="t-year">2020s</div>
-      <div class="t-text">Expanding the electric lineup — i4, iX, i7 — with continued focus on software, sustainability, and driver engagement.</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- INNOVATION -->
-<section id="innovation" class="container">
-  <h2 class="section-title">Innovation Highlights</h2>
-  <p class="section-sub">Lightweight materials, efficient powertrains, and digital intelligence.</p>
+  <section id="motorsport" class="content">
+    <h2>Motorsport</h2>
+    <p>BMW has a rich motorsport legacy, from touring cars to Formula 1 and endurance racing. The M Division translates this racing DNA into high-performance road cars.</p>
+  </section>
 
-  <div class="grid" style="grid-template-columns:repeat(3,1fr)">
-    <article class="card reveal">
-      <div class="tag">Powertrains</div>
-      <h3 class="title">EfficientDynamics</h3>
-      <p>BMW’s strategy combining aerodynamics, weight reduction, energy recovery, and smart engine tech to improve performance and economy.</p>
-    </article>
-    <article class="card reveal">
-      <div class="tag">Materials</div>
-      <h3 class="title">Carbon Core & CFRP</h3>
-      <p>From the i3’s carbon‑fiber cell to mixed‑material architectures, BMW scales lightweighting for agility and range.</p>
-    </article>
-    <article class="card reveal">
-      <div class="tag">Digital</div>
-      <h3 class="title">iDrive & Software</h3>
-      <p>Intuitive driver interfaces and OTA updates bring new features, safety aids, and infotainment to existing vehicles.</p>
-    </article>
-  </div>
-
-  <div class="stats" style="margin-top:1.2rem">
-    <div class="stat reveal"><div class="num">1916</div><div class="lbl">Year founded</div></div>
-    <div class="stat reveal"><div class="num">3</div><div class="lbl">Core brands (BMW, MINI, RR)</div></div>
-    <div class="stat reveal"><div class="num">M</div><div class="lbl">Performance division</div></div>
-    <div class="stat reveal"><div class="num">EV</div><div class="lbl">Rapidly expanding lineup</div></div>
-  </div>
-</section>
-
-<!-- MOTORSPORT -->
-<section id="motorsport" class="container">
-  <h2 class="section-title">Motorsport Heritage</h2>
-  <p class="section-sub">From touring cars to Formula One power and Le Mans victory.</p>
-
-  <div class="grid" style="grid-template-columns:repeat(2,1fr)">
-    <article class="card reveal">
-      <h3 class="title">Touring & GT</h3>
-      <p>DTM and GT racing forged legends like the M3 and M4. Privateer teams worldwide race BMWs for their balance and durability.</p>
-    </article>
-    <article class="card reveal">
-      <h3 class="title">F1 & Endurance</h3>
-      <p>BMW turbo power won the 1983 F1 World Championship with Brabham. In 1999, the V12 LMR secured overall victory at the 24 Hours of Le Mans.</p>
-    </article>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="container">
-  <h2 class="section-title">Gallery</h2>
-  <p class="section-sub">A few favorites — historic and modern. (Images from Unsplash/Wikimedia)</p>
-  <div class="gallery">
-    <figure class="g reveal"><img alt="Classic BMW 3.0 CSL" src="https://images.unsplash.com/photo-1620026769831-b29642bb6df9?q=80&w=1200&auto=format&fit=crop"/></figure>
-    <figure class="g reveal"><img alt="BMW HQ tower Munich" src="https://upload.wikimedia.org/wikipedia/commons/3/34/BMW_HQ_Munich.jpg"/></figure>
-    <figure class="g reveal"><img alt="Modern BMW iX" src="https://images.unsplash.com/photo-1650366307464-73fdd1cf9b1f?q=80&w=1200&auto=format&fit=crop"/></figure>
-    <figure class="g reveal"><img alt="BMW M4 GT3" src="https://images.unsplash.com/photo-1666712106237-9ec955f78028?q=80&w=1200&auto=format&fit=crop"/></figure>
-    <figure class="g reveal"><img alt="BMW i8" src="https://images.unsplash.com/photo-1589391886645-d51941baf7c1?q=80&w=1200&auto=format&fit=crop"/></figure>
-    <figure class="g reveal"><img alt="BMW R nineT motorcycle" src="https://images.unsplash.com/photo-1630165645044-f722b4106c73?q=80&w=1200&auto=format&fit=crop"/></figure>
-  </div>
-  <p class="section-sub" style="margin-top:1rem">Image credits: Unsplash photographers & Wikimedia Commons (for HQ photo). Used for demo.</p>
-</section>
-
-  </main>  <footer>
-    <div class="container">
-      © <span id="year"></span> BMW Fan Page — Educational/Demo site for GitHub Pages.
+  <section id="gallery" class="content">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="https://www.bmw.com/content/dam/bmw/marketBMWCOM/bmw_com/categories/automotive-life/bmw-history/1920x1080.jpg" alt="Classic BMW">
+      <img src="https://www.bmw.com/content/dam/bmw/marketBMWCOM/bmw_com/categories/magazine-article-pool/2022/bmw-i7/bmw-i7-sedan-exterior-03.jpg" alt="BMW i7">
+      <img src="https://www.bmw-m.com/content/dam/bmw/marketBMWCOM/bmw-m_com/home/teaser/2021/hero.jpg" alt="BMW M Series">
     </div>
-  </footer>  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  </section>
 
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('a'); io.unobserve(e.target);} })
-    }, {threshold:.12, rootMargin:'0px 0px -50px 0px'});
-    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+  <footer>
+    <p>&copy; 2025 BMW Showcase | Designed for GitHub Pages</p>
+  </footer>
 
-    // Parallax hero (subtle, GPU-friendly)
-    const hero = document.querySelector('.hero');
-    let rafId=null, mx=0,my=0, tx=0,ty=0;
-    hero.addEventListener('mousemove',(e)=>{ const r=hero.getBoundingClientRect(); mx=(e.clientX-r.width/2)/r.width; my=(e.clientY-r.height/2)/r.height; if(!rafId) tick(); });
-    function tick(){ tx += (mx-tx)*0.06; ty += (my-ty)*0.06; hero.style.setProperty('--px', tx); hero.style.setProperty('--py', ty); hero.querySelector('.backdrop').style.transform = `translate3d(${tx*12}px, ${ty*10}px, 0) scale(1.03)`; rafId = requestAnimationFrame(()=>{ if(Math.abs(mx-tx)+Math.abs(my-ty) < 0.001){ cancelAnimationFrame(rafId); rafId=null; } else { tick(); } }); }
-  </script></body>
-  </html>
+  <script src="script.js"></script>
+</body>
+    </html>
